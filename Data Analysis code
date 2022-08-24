@@ -1,0 +1,372 @@
+library(tidyverse)
+library(lubridate)
+
+#loading the data
+divvy_trip_202105 <- read_csv("202105-divvy-tripdata.csv")
+divvy_trip_202106 <- read_csv("202106-divvy-tripdata.csv")
+divvy_trip_202107 <- read_csv("202107-divvy-tripdata.csv")
+divvy_trip_202108 <- read_csv("202108-divvy-tripdata.csv")
+divvy_trip_202109 <- read_csv("202109-divvy-tripdata.csv")
+divvy_trip_202110 <- read_csv("202110-divvy-tripdata.csv")
+divvy_trip_202111 <- read_csv("202111-divvy-tripdata.csv")
+divvy_trip_202112 <- read_csv("202112-divvy-tripdata.csv")
+divvy_trip_202201 <- read_csv("202201-divvy-tripdata.csv")
+divvy_trip_202202 <- read_csv("202202-divvy-tripdata.csv")
+divvy_trip_202203 <- read_csv("202203-divvy-tripdata.csv")
+divvy_trip_202204 <- read_csv("202204-divvy-tripdata.csv")
+
+#wrangle and combine data into a file
+# Compare column names each of the files
+colnames(divvy_trip_202105)
+colnames(divvy_trip_202106)
+colnames(divvy_trip_202107)
+colnames(divvy_trip_202108)
+colnames(divvy_trip_202109)
+colnames(divvy_trip_202110)
+colnames(divvy_trip_202110)
+colnames(divvy_trip_202111)
+colnames(divvy_trip_202112)
+colnames(divvy_trip_202201)
+colnames(divvy_trip_202202)
+colnames(divvy_trip_202203)
+colnames(divvy_trip_202204)
+
+# Rename columns  to make them consistent with q1_2020 (as this will be the supposed going-forward table design for Divvy)
+
+(divvy_trip_202105 <- rename(divvy_trip_202105 
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202106 <- rename(divvy_trip_202106
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202107 <- rename(divvy_trip_202107
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202108 <- rename(divvy_trip_202108
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202109 <- rename(divvy_trip_202109
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202110 <- rename(divvy_trip_202110
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202111 <- rename(divvy_trip_202111
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202112 <- rename(divvy_trip_202112
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202201 <- rename(divvy_trip_202201
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202202 <- rename(divvy_trip_202202
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202203 <- rename(divvy_trip_202203
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+(divvy_trip_202204 <- rename(divvy_trip_202204
+                             ,tripid = ride_id
+                             ,bike_type = rideable_type
+                             ,start_time = started_at  
+                             ,end_time = ended_at 
+                             ,from_station_name = start_station_name
+                             ,from_station_id = start_station_id
+                             ,to_station_name = end_station_name
+                             ,to_station_id = end_station_id
+                             ,user_type  = member_casual))
+
+
+# Inspect the dataframes and look for incongruencies
+
+str(divvy_trip_202105)
+str(divvy_trip_202106)
+str(divvy_trip_202107)
+str(divvy_trip_202108)
+str(divvy_trip_202109)
+str(divvy_trip_202110)
+str(divvy_trip_202111)
+str(divvy_trip_202112)
+str(divvy_trip_202201)
+str(divvy_trip_202202)
+str(divvy_trip_202203)
+str(divvy_trip_202204)
+
+# Convert tripid and bike_type to character so that they can stack correctly
+divvy_trip_202105 <-  mutate(divvy_trip_202105, tripid = as.character(tripid)
+                   ,bike_type = as.character(bike_type)) 
+
+divvy_trip_202106 <-  mutate(divvy_trip_202106, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type))
+
+divvy_trip_202107 <-  mutate(divvy_trip_202107, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type)) 
+
+divvy_trip_202108 <-  mutate(divvy_trip_202108, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type))
+
+divvy_trip_202109 <-  mutate(divvy_trip_202109, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type)) 
+
+divvy_trip_202110 <-  mutate(divvy_trip_202110, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type)) 
+
+divvy_trip_202111 <-  mutate(divvy_trip_202111, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type))
+
+divvy_trip_202112 <-  mutate(divvy_trip_202112, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type)) 
+
+divvy_trip_202201 <-  mutate(divvy_trip_202201, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type)) 
+
+divvy_trip_202202 <-  mutate(divvy_trip_202202, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type)) 
+
+divvy_trip_202203 <-  mutate(divvy_trip_202203, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type)) 
+
+divvy_trip_202204 <-  mutate(divvy_trip_202204, tripid = as.character(tripid)
+                             ,bike_type = as.character(bike_type)) 
+
+
+
+# Stack individual quarter's data frames into one big data frame
+all_trips <- bind_rows(divvy_trip_202105, divvy_trip_202106, divvy_trip_202107, 
+                       divvy_trip_202108, divvy_trip_202109, divvy_trip_202110,
+                       divvy_trip_202111, divvy_trip_202112, divvy_trip_202201,
+                       divvy_trip_202202, divvy_trip_202203, divvy_trip_202204)
+
+
+# Remove lat, long, ...14
+all_trips <- all_trips %>%  
+  select(-c(start_lat, start_lng, end_lat, end_lng, ...14))
+
+#all_trips <- all_trips %>%  
+  #select(-c(...14))
+
+
+head(all_trips)
+
+#======================================================
+# STEP 3: CLEAN UP AND ADD DATA TO PREPARE FOR ANALYSIS
+#======================================================
+# Inspect the new table that has been created
+colnames(all_trips)  #List of column names
+nrow(all_trips)  #How many rows are in data frame?
+dim(all_trips)  #Dimensions of the data frame?
+head(all_trips)  #See the first 6 rows of data frame.  Also tail(all_trips)
+str(all_trips)  #See list of columns and data types (numeric, character, etc)
+summary(all_trips)  #Statistical summary of data. Mainly for numerics
+
+# Check to make sure the proper number of observations were reassigned
+table(all_trips$user_type)
+table(all_trips$start_time)
+
+#Changing the date format of start and end_time
+all_trips$start_time <- parse_date_time(all_trips$start_time, orders= "dmy HM")
+all_trips$end_time <- parse_date_time(all_trips$end_time, orders= "dmy HM")
+
+#all_trips$start_time <- format(as.Date(all_trips$start_time, format="%d/%m/%Y %H:%M"),"%Y/%m/%d %H:%M")
+#all_trips$end_time <- format(as.Date(all_trips$end_time, format="%d/%m/%Y %H:%M"),"%Y/%m/%d %H:%M")
+
+head(all_trips$start_time)
+
+# Add columns that list the date, month, day, and year of each ride
+# This will allow us to aggregate ride data for each month, day, or year ... before completing these operations we could only aggregate at the ride level
+# https://www.statmethods.net/input/dates.html more on date formats in R found at that link
+all_trips$date <- format(as.Date(all_trips$start_time)) #The default format is yyyy-mm-dd
+all_trips$month <- format(as.Date(all_trips$date), "%m")
+all_trips$day <- format(as.Date(all_trips$date), "%d")
+all_trips$year <- format(as.Date(all_trips$date), "%Y")
+all_trips$day_of_week <- format(as.Date(all_trips$date), "%A")
+
+class(all_trips$start_time)
+
+# Add a "ride_length" calculation to all_trips (in seconds)
+# https://stat.ethz.ch/R-manual/R-devel/library/base/html/difftime.html
+all_trips$ride_length <- difftime(all_trips$end_time, all_trips$start_time)
+
+
+
+# Inspect the structure of the columns
+str(all_trips)
+
+# Convert "ride_length" from Factor to numeric so we can run calculations on the data
+is.factor(all_trips$ride_length)
+all_trips$ride_length <- as.numeric(as.character(all_trips$ride_length))
+is.numeric(all_trips$ride_length)
+
+
+View(all_trips)
+
+# Add a "ride_length_mins" calculation to all_trips (minutes)
+
+all_trips$ride_length_min <- (all_trips$ride_length)/60
+
+summary(all_trips$ride_length_min)
+
+View(all_trips)
+
+skim(all_trips)
+
+# Remove "bad" data
+# The dataframe includes a few hundred entries when bikes were taken out of docks and checked for quality by Divvy or ride_length was negative
+# We will create a new version of the dataframe (v2) since data is being removed
+# https://www.datasciencemadesimple.com/delete-or-drop-rows-in-r-with-conditions-2/
+
+all_trips_v2 <- all_trips
+all_trips_v2 [all_trips_v2 < 0] <- NA #removing negative values
+all_trips_v2 [all_trips_v2 == 0] <- NA #removing zero values
+all_trips_v3 <- na.omit(all_trips_v2)  
+summary(all_trips_v3)
+#=====================================
+# STEP 4: CONDUCT DESCRIPTIVE ANALYSIS
+#=====================================
+# Descriptive analysis on ride_length (all figures in seconds)
+mean(all_trips_v3$ride_length_min) #straight average (total ride length / rides)
+median(all_trips_v3$ride_length_min) #midpoint number in the ascending array of ride lengths
+max(all_trips_v3$ride_length_min) #longest ride
+min(all_trips_v3$ride_length_min) #shortest ride
+highest <- filter(all_trips_v3, all_trips_v3$ride_length_min ==55944)
+view(highest)
+summary(all_trips_v3$ride_length_min)
+# Compare members and casual users
+aggregate(all_trips_v3$ride_length ~ all_trips_v3$user_type, FUN = mean)
+aggregate(all_trips_v3$ride_length ~ all_trips_v3$user_type, FUN = median)
+aggregate(all_trips_v3$ride_length ~ all_trips_v3$user_type, FUN = max)
+aggregate(all_trips_v3$ride_length ~ all_trips_v3$user_type, FUN = min)
+
+# See the average ride time by each day for members vs casual users
+aggregate(all_trips_v3$ride_length ~ all_trips_v3$user_type + all_trips_v3$day_of_week, FUN = mean)
+
+# Notice that the days of the week are out of order. Let's fix that.
+all_trips_v3$day_of_week <- ordered(all_trips_v3$day_of_week, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+
+#Now, let's run the average ride time by each day for members vs casual users
+aggregate(all_trips_v3$ride_length ~ all_trips_v3$user_type + all_trips_v3$day_of_week, FUN = mean)
+
+#analyze ridership data by type and weekday
+all_trips_v3 %>% 
+  mutate(weekday = wday(start_time, label = TRUE)) %>%  #creates weekday field using wday()
+  group_by(user_type, weekday) %>%  #groups by usertype and weekday
+  summarise(number_of_rides = n()							#calculates the number of rides and average duration 
+            ,average_duration = mean(ride_length)) %>% 		# calculates the average duration
+  arrange(user_type, weekday)								# sorts
+
+#visualize the number of rides by rider type
+all_trips_v3 %>% 
+  mutate(weekday = wday(start_time, label = TRUE)) %>% 
+  group_by(user_type, weekday) %>% 
+  summarise(number_of_rides = n()
+            ,average_duration = mean(ride_length)) %>% 
+  arrange(user_type, weekday)  %>% 
+  ggplot(aes(x = weekday, y = number_of_rides, fill = user_type,)) +
+  geom_col(position = "dodge") + labs(title = "Number of rides by user type")
+
+# visualization for average duration
+all_trips_v3 %>% 
+  mutate(weekday = wday(start_time, label = TRUE)) %>% 
+  group_by(user_type, weekday) %>% 
+  summarise(number_of_rides = n()
+            ,average_duration = mean(ride_length)) %>% 
+  arrange(user_type, weekday)  %>% 
+  ggplot(aes(x = weekday, y = average_duration, fill = user_type)) +
+  geom_col(position = "dodge") + labs(title = "Average duration of rides", orientation)
+
+#=================================================
+# STEP 5: EXPORT SUMMARY FILE FOR FURTHER ANALYSIS
+#=================================================
+# Create a csv file that we will visualize in Excel or Tableau
+counts <- aggregate(all_trips_v3$ride_length ~ all_trips_v3$user_type + all_trips_v3$day_of_week, FUN = mean)
+write.csv(counts, file = 'D:/bike_ride.csv')
+write.csv(all_trips_v3, file = 'D:/bike_ride_all.csv') 
